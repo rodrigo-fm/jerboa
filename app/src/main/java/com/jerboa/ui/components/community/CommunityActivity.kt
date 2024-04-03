@@ -430,6 +430,7 @@ fun CommunityActivity(
                             postActionBarMode = postActionBarMode,
                             showPostAppendRetry = communityViewModel.postsRes is ApiState.AppendingFailure,
                             swipeToActionPreset = swipeToActionPreset,
+                            infiniteScroll = true
                         )
                     }
 

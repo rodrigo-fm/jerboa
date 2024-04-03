@@ -96,6 +96,7 @@ fun LookAndFeelActivity(
     var showPostLinkPreviewModeState by remember { mutableStateOf(settings.showPostLinkPreviews) }
     var markAsReadOnScrollState by remember { mutableStateOf(settings.markAsReadOnScroll) }
     var autoPlayGifsState by remember { mutableStateOf(settings.autoPlayGifs) }
+    var infiniteScroll by remember { mutableStateOf(settings.infiniteScroll) }
 
     val snackbarHostState = remember { SnackbarHostState() }
 
@@ -128,6 +129,7 @@ fun LookAndFeelActivity(
                 autoPlayGifs = autoPlayGifsState,
                 postNavigationGestureMode = postNavigationGestureModeState.ordinal,
                 swipeToActionPreset = swipeToActionPresetState.ordinal,
+                infiniteScroll = infiniteScroll
             ),
         )
     }
@@ -519,6 +521,16 @@ fun LookAndFeelActivity(
                         },
                         title = {
                             Text(stringResource(id = R.string.settings_autoplaygifs))
+                        },
+                    )
+                    SwitchPreference(
+                        value = infiniteScroll,
+                        onValueChange = {
+                            infiniteScroll = it
+                            updateAppSettings()
+                        },
+                        title = {
+                            Text(stringResource(id = R.string.settings_infinite_scroll))
                         },
                     )
                 }

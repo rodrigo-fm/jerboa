@@ -7,6 +7,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
@@ -83,15 +85,16 @@ fun PostListings(
     postActionBarMode: PostActionBarMode,
     showPostAppendRetry: Boolean,
     swipeToActionPreset: SwipeToActionPreset,
+    infiniteScroll: Boolean,
 ) {
     LazyColumn(
         state = listState,
         modifier =
-            Modifier
-                .padding(padding)
-                .fillMaxSize()
-                .simpleVerticalScrollbar(listState)
-                .testTag("jerboa:posts"),
+        Modifier
+            .padding(padding)
+            .fillMaxSize()
+            .simpleVerticalScrollbar(listState)
+            .testTag("jerboa:posts"),
     ) {
         item(contentType = "aboveContent") {
             contentAboveListings()
@@ -155,19 +158,29 @@ fun PostListings(
                 RetryLoadingPosts(loadMorePosts)
             }
         }
-    }
 
-    // observer when reached end of list
-    val endOfListReached by remember {
-        derivedStateOf {
-            listState.isScrolledToEnd()
+        if (!infiniteScroll) {
+            item(contentType = "retry_posts") {
+                Button(onClick = {}) {
+                    Text(text= "click click")
+                }
+            }
         }
     }
 
-    // Act when end of list reached
-    if (endOfListReached && !showPostAppendRetry) {
-        LaunchedEffect(Unit) {
-            loadMorePosts()
+    if (infiniteScroll) {
+        // observer when reached end of list
+        val endOfListReached by remember {
+            derivedStateOf {
+                listState.isScrolledToEnd()
+            }
+        }
+
+        // Act when end of list reached
+        if (endOfListReached && !showPostAppendRetry) {
+            LaunchedEffect(Unit) {
+                loadMorePosts()
+            }
         }
     }
 }
@@ -214,5 +227,6 @@ fun PreviewPostListings() {
         showPostAppendRetry = false,
         swipeToActionPreset = SwipeToActionPreset.TwoSides,
         onReplyClick = {},
+        infiniteScroll = false
     )
 }

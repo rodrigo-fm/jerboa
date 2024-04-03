@@ -258,6 +258,7 @@ fun BottomNavActivity(
                             postActionBarMode = appSettings.postActionBarMode.toEnum(),
                             swipeToActionPreset = appSettings.swipeToActionPreset.toEnum(),
                             padding = padding,
+                            infiniteScroll = appSettings.infiniteScroll
                         )
                     }
 

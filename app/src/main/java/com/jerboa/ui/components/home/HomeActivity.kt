@@ -99,6 +99,7 @@ fun HomeActivity(
     postActionBarMode: PostActionBarMode,
     swipeToActionPreset: SwipeToActionPreset,
     padding: PaddingValues? = null,
+    infiniteScroll: Boolean,
 ) {
     Log.d("jerboa", "got to home activity")
 
@@ -173,6 +174,7 @@ fun HomeActivity(
                 snackbarHostState = snackbarHostState,
                 postActionBarMode = postActionBarMode,
                 swipeToActionPreset = swipeToActionPreset,
+                infiniteScroll = infiniteScroll
             )
         },
         floatingActionButtonPosition = FabPosition.End,
@@ -222,6 +224,7 @@ fun MainPostListingsContent(
     markAsReadOnScroll: Boolean,
     postActionBarMode: PostActionBarMode,
     swipeToActionPreset: SwipeToActionPreset,
+    infiniteScroll: Boolean,
 ) {
     val ctx = LocalContext.current
     val scope = rememberCoroutineScope()
@@ -438,6 +441,7 @@ fun MainPostListingsContent(
             postActionBarMode = postActionBarMode,
             showPostAppendRetry = homeViewModel.postsRes is ApiState.AppendingFailure,
             swipeToActionPreset = swipeToActionPreset,
+            infiniteScroll = infiniteScroll,
         )
     }
 }

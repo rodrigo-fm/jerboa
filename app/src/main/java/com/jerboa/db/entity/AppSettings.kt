@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 import com.jerboa.db.DEFAULT_AUTO_PLAY_GIFS
 import com.jerboa.db.DEFAULT_BACK_CONFIRMATION_MODE
 import com.jerboa.db.DEFAULT_BLUR_NSFW
+import com.jerboa.db.DEFAULT_INFINITE_SCROLL
 import com.jerboa.db.DEFAULT_LAST_VERSION_CODE_VIEWED
 import com.jerboa.db.DEFAULT_MARK_AS_READ_ON_SCROLL
 import com.jerboa.db.DEFAULT_NAVIGATE_PARENT_COMMENTS_WITH_VOLUME_BUTTONS
@@ -146,4 +147,9 @@ data class AppSettings(
         defaultValue = DEFAULT_LAST_VERSION_CODE_VIEWED.toString(),
     )
     val lastVersionCodeViewed: Int,
+    @ColumnInfo(
+        name="infinite_scroll",
+        defaultValue = DEFAULT_INFINITE_SCROLL.toString()
+    )
+    val infiniteScroll: Boolean,
 )

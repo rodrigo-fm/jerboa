@@ -657,6 +657,7 @@ fun UserTabs(
                                     postActionBarMode = postActionBarMode,
                                     showPostAppendRetry = personProfileViewModel.personDetailsRes is ApiState.AppendingFailure,
                                     swipeToActionPreset = swipeToActionPreset,
+                                    infiniteScroll = true
                                 )
                             }
                             else -> {}

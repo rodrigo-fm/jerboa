@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 34,
-    "identityHash": "ae2c951126db475de127d7970797f426",
+    "identityHash": "f7b398d73dc736e240d091e0dcad1ea9",
     "entities": [
       {
         "tableName": "Account",
@@ -81,7 +81,7 @@
       },
       {
         "tableName": "AppSettings",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `font_size` INTEGER NOT NULL DEFAULT 16, `theme` INTEGER NOT NULL DEFAULT 0, `theme_color` INTEGER NOT NULL DEFAULT 0, `post_view_mode` INTEGER NOT NULL DEFAULT 0, `show_bottom_nav` INTEGER NOT NULL DEFAULT 1, `post_navigation_gesture_mode` INTEGER NOT NULL DEFAULT 0, `show_collapsed_comment_content` INTEGER NOT NULL DEFAULT 0, `show_comment_action_bar_by_default` INTEGER NOT NULL DEFAULT 1, `show_voting_arrows_in_list_view` INTEGER NOT NULL DEFAULT 1, `show_parent_comment_navigation_buttons` INTEGER NOT NULL DEFAULT 0, `navigate_parent_comments_with_volume_buttons` INTEGER NOT NULL DEFAULT 0, `use_custom_tabs` INTEGER NOT NULL DEFAULT 1, `use_private_tabs` INTEGER NOT NULL DEFAULT 0, `secure_window` INTEGER NOT NULL DEFAULT 0, `blur_nsfw` INTEGER NOT NULL DEFAULT 1, `show_text_descriptions_in_navbar` INTEGER NOT NULL DEFAULT 1, `markAsReadOnScroll` INTEGER NOT NULL DEFAULT 0, `backConfirmationMode` INTEGER NOT NULL DEFAULT 1, `show_post_link_previews` INTEGER NOT NULL DEFAULT 1, `post_actionbar_mode` INTEGER NOT NULL DEFAULT 0, `auto_play_gifs` INTEGER NOT NULL DEFAULT 0, `swipe_to_action_preset` INTEGER NOT NULL DEFAULT 0, `last_version_code_viewed` INTEGER NOT NULL DEFAULT 0, `disable_video_autoplay` INTEGER NOT NULL DEFAULT 0)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `font_size` INTEGER NOT NULL DEFAULT 16, `theme` INTEGER NOT NULL DEFAULT 0, `theme_color` INTEGER NOT NULL DEFAULT 0, `post_view_mode` INTEGER NOT NULL DEFAULT 0, `show_bottom_nav` INTEGER NOT NULL DEFAULT 1, `enable_infinite_scroll` INTEGER NOT NULL DEFAULT 0, `post_navigation_gesture_mode` INTEGER NOT NULL DEFAULT 0, `show_collapsed_comment_content` INTEGER NOT NULL DEFAULT 0, `show_comment_action_bar_by_default` INTEGER NOT NULL DEFAULT 1, `show_voting_arrows_in_list_view` INTEGER NOT NULL DEFAULT 1, `show_parent_comment_navigation_buttons` INTEGER NOT NULL DEFAULT 0, `navigate_parent_comments_with_volume_buttons` INTEGER NOT NULL DEFAULT 0, `use_custom_tabs` INTEGER NOT NULL DEFAULT 1, `use_private_tabs` INTEGER NOT NULL DEFAULT 0, `secure_window` INTEGER NOT NULL DEFAULT 0, `blur_nsfw` INTEGER NOT NULL DEFAULT 1, `show_text_descriptions_in_navbar` INTEGER NOT NULL DEFAULT 1, `markAsReadOnScroll` INTEGER NOT NULL DEFAULT 0, `backConfirmationMode` INTEGER NOT NULL DEFAULT 1, `show_post_link_previews` INTEGER NOT NULL DEFAULT 1, `post_actionbar_mode` INTEGER NOT NULL DEFAULT 0, `auto_play_gifs` INTEGER NOT NULL DEFAULT 0, `swipe_to_action_preset` INTEGER NOT NULL DEFAULT 0, `last_version_code_viewed` INTEGER NOT NULL DEFAULT 0, `disable_video_autoplay` INTEGER NOT NULL DEFAULT 0)",
         "fields": [
           {
             "fieldPath": "id",
@@ -123,6 +123,13 @@
             "affinity": "INTEGER",
             "notNull": true,
             "defaultValue": "1"
+          },
+          {
+            "fieldPath": "enableInfiniteScroll",
+            "columnName": "enable_infinite_scroll",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
           },
           {
             "fieldPath": "postNavigationGestureMode",
@@ -268,7 +275,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ae2c951126db475de127d7970797f426')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f7b398d73dc736e240d091e0dcad1ea9')"
     ]
   }
 }

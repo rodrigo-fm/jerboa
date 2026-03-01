@@ -27,6 +27,8 @@ const val DEFAULT_LAST_VERSION_CODE_VIEWED = 0
 const val DEFAULT_POST_VIEW_MODE = 0
 const val DEFAULT_POST_NAVIGATION_GESTURE_MODE = 0
 const val DEFAULT_SHOW_BOTTOM_NAV = 1
+
+const val DEFAULT_ENABLE_INFINITE_SCROLL = 0
 const val DEFAULT_SHOW_COLLAPSED_COMMENT_CONTENT = 0
 const val DEFAULT_SHOW_COMMENT_ACTION_BAR_BY_DEFAULT = 1
 const val DEFAULT_SHOW_VOTING_ARROWS_IN_LIST_VIEW = 1
@@ -72,10 +74,11 @@ val APP_SETTINGS_DEFAULT =
         autoPlayGifs = DEFAULT_AUTO_PLAY_GIFS.toBool(),
         swipeToActionPreset = DEFAULT_SWIPE_TO_ACTION_PRESET,
         disableVideoAutoplay = DEFAULT_DISABLE_AUTO_PLAY,
+        enableInfiniteScroll = DEFAULT_ENABLE_INFINITE_SCROLL.toBool()
     )
 
 @Database(
-    version = 34,
+    version = 35,
     entities = [Account::class, AppSettings::class],
     exportSchema = true,
 )

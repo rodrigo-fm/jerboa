@@ -82,7 +82,10 @@ open class PostsViewModel(
         }
     }
 
-    fun appendPosts() {
+    // TODO: continue work here.
+    //  Analyze if the usage of infiniteScrollEnabled is the right
+    //  pattern here.
+    fun appendPosts(infiniteScrollEnabled: Boolean) {
         Log.d("PostsViewModel", "Appending posts")
         viewModelScope.launch {
             val oldRes = postsRes

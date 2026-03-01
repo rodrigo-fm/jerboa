@@ -9,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.jerboa.R
 import com.jerboa.ui.theme.XXL_PADDING
 
@@ -28,4 +29,33 @@ fun RetryLoadingPosts(onClick: () -> Unit) {
     ) {
         Text(stringResource(R.string.posts_failed_loading))
     }
+}
+
+@Composable
+fun NextPage(onClick: () -> Unit) {
+    Button(
+        modifier =
+            Modifier
+                .padding(horizontal = XXL_PADDING),
+        onClick = onClick,
+        colors =
+            ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.primary,
+                contentColor = MaterialTheme.colorScheme.onPrimary,
+            ),
+    ) {
+        Text(stringResource(R.string.next))
+    }
+}
+
+@Preview
+@Composable
+private fun RetryLoadingPostsPreview() {
+    RetryLoadingPosts { }
+}
+
+@Preview
+@Composable
+private fun NextPagePreview() {
+    NextPage {  }
 }

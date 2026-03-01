@@ -455,6 +455,8 @@ fun CommunityScreen(
                             showPostAppendRetry = communityViewModel.postsRes is ApiState.AppendingFailure,
                             swipeToActionPreset = swipeToActionPreset,
                             disableVideoAutoplay = disableVideoAutoplay,
+                            // TODO: fix this to use the same pattern the app uses to access settings throughout screens
+                            infiniteScrollEnabled = appSettingsViewModel.appSettings.value?.enableInfiniteScroll ?: false
                         )
                     }
 

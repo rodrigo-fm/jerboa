@@ -467,6 +467,7 @@ fun MainPostListingsContent(
             showPostAppendRetry = homeViewModel.postsRes is ApiState.AppendingFailure,
             swipeToActionPreset = swipeToActionPreset,
             disableVideoAutoplay = disableVideoAutoplay,
+            infiniteScrollEnabled = appSettingsViewModel.appSettings.value?.enableInfiniteScroll ?: false
         )
     }
 }

@@ -27,6 +27,7 @@ import com.jerboa.feat.PostActionBarMode
 import com.jerboa.feat.SwipeToActionPreset
 import com.jerboa.feat.default
 import com.jerboa.rememberJerboaAppState
+import com.jerboa.ui.components.common.NextPage
 import com.jerboa.ui.components.common.RetryLoadingPosts
 import com.jerboa.ui.components.common.TriggerWhenReachingEnd
 import com.jerboa.ui.theme.SMALL_PADDING
@@ -72,6 +73,7 @@ fun PostListings(
     showAvatar: Boolean,
     useCustomTabs: Boolean,
     usePrivateTabs: Boolean,
+    infiniteScrollEnabled: Boolean,
     blurNSFW: BlurNSFW,
     showPostLinkPreviews: Boolean,
     appState: JerboaAppState,
@@ -153,14 +155,30 @@ fun PostListings(
             )
         }
 
-        if (showPostAppendRetry) {
+        if (showPostAppendRetry && infiniteScrollEnabled) {
             item(contentType = "retry_posts") {
                 RetryLoadingPosts(loadMorePosts)
             }
         }
+
+        // TODO: fix button being displayed during loading
+        //  find where the appState is making the fetch posts request
+        if (!infiniteScrollEnabled) {
+            item(contentType = "next_posts") {
+                NextPage {
+                    // TODO: clear the current posts list and display the a new post list
+                    //  I think the "loadMorePosts" will be modified here, still have to
+                    //  investigate though.
+                }
+            }
+        }
+
     }
 
-    TriggerWhenReachingEnd(listState, showPostAppendRetry, loadMorePosts)
+    if (infiniteScrollEnabled) {
+        TriggerWhenReachingEnd(listState, showPostAppendRetry, loadMorePosts)
+    }
+
 }
 
 @Preview
@@ -207,5 +225,6 @@ fun PreviewPostListings() {
         swipeToActionPreset = SwipeToActionPreset.TwoSides,
         onReplyClick = {},
         disableVideoAutoplay = false,
+        infiniteScrollEnabled = false
     )
 }

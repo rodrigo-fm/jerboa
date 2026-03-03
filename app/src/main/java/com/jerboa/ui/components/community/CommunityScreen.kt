@@ -89,6 +89,7 @@ fun CommunityScreen(
     postActionBarMode: PostActionBarMode,
     swipeToActionPreset: SwipeToActionPreset,
     disableVideoAutoplay: Boolean,
+    infiniteScrollEnabled: Boolean,
 ) {
     Log.d("jerboa", "got to community screen")
 
@@ -422,7 +423,8 @@ fun CommunityScreen(
                                 appState.toProfile(id = personId)
                             },
                             loadMorePosts = {
-                                communityViewModel.appendPosts()
+                                scrollToTop(scope, postListState)
+                                communityViewModel.loadMorePosts(infiniteScrollEnabled)
                             },
                             account = account,
                             showCommunityName = false,
@@ -455,8 +457,7 @@ fun CommunityScreen(
                             showPostAppendRetry = communityViewModel.postsRes is ApiState.AppendingFailure,
                             swipeToActionPreset = swipeToActionPreset,
                             disableVideoAutoplay = disableVideoAutoplay,
-                            // TODO: fix this to use the same pattern the app uses to access settings throughout screens
-                            infiniteScrollEnabled = appSettingsViewModel.appSettings.value?.enableInfiniteScroll ?: false
+                            infiniteScrollEnabled = infiniteScrollEnabled
                         )
                     }
 

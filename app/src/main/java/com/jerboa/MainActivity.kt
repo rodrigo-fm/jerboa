@@ -259,6 +259,7 @@ class MainActivity : AppCompatActivity() {
                             postActionBarMode = appSettings.postActionBarMode.toEnum(),
                             swipeToActionPreset = appSettings.swipeToActionPreset.toEnum(),
                             disableVideoAutoplay = appSettings.disableVideoAutoplay.toBool(),
+                            infiniteScrollEnabled = appSettings.enableInfiniteScroll
                         )
                     }
 
@@ -304,6 +305,7 @@ class MainActivity : AppCompatActivity() {
                             postActionBarMode = appSettings.postActionBarMode.toEnum(),
                             swipeToActionPreset = appSettings.swipeToActionPreset.toEnum(),
                             disableVideoAutoplay = appSettings.disableVideoAutoplay.toBool(),
+                            infiniteScrollEnabled = appSettings.enableInfiniteScroll
                         )
                     }
 
@@ -347,6 +349,7 @@ class MainActivity : AppCompatActivity() {
                             postActionBarMode = appSettings.postActionBarMode.toEnum(),
                             swipeToActionPreset = appSettings.swipeToActionPreset.toEnum(),
                             disableVideoAutoplay = appSettings.disableVideoAutoplay.toBool(),
+                            infiniteScrollEnabled = appSettings.enableInfiniteScroll
                         )
                     }
 
@@ -387,6 +390,7 @@ class MainActivity : AppCompatActivity() {
                             postActionBarMode = appSettings.postActionBarMode.toEnum(),
                             swipeToActionPreset = appSettings.swipeToActionPreset.toEnum(),
                             disableVideoAutoplay = appSettings.disableVideoAutoplay.toBool(),
+                            infiniteScrollEnabled = appSettings.enableInfiniteScroll
                         )
                     }
 

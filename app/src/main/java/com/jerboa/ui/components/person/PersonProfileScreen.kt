@@ -127,6 +127,7 @@ fun PersonProfileScreen(
     swipeToActionPreset: SwipeToActionPreset,
     disableVideoAutoplay: Boolean,
     padding: PaddingValues? = null,
+    infiniteScrollEnabled: Boolean,
 ) {
     Log.d("jerboa", "got to person screen")
 
@@ -317,6 +318,7 @@ fun PersonProfileScreen(
                     postActionBarMode = postActionBarMode,
                     swipeToActionPreset = swipeToActionPreset,
                     disableVideoAutoplay = disableVideoAutoplay,
+                    infiniteScrollEnabled = infiniteScrollEnabled,
                 )
             }
         },
@@ -355,6 +357,7 @@ fun UserTabs(
     postActionBarMode: PostActionBarMode,
     swipeToActionPreset: SwipeToActionPreset,
     disableVideoAutoplay: Boolean,
+    infiniteScrollEnabled: Boolean,
 ) {
     val tabTitles =
         if (savedMode) {
@@ -677,7 +680,7 @@ fun UserTabs(
                                     showPostAppendRetry = personProfileViewModel.personDetailsRes is ApiState.AppendingFailure,
                                     swipeToActionPreset = swipeToActionPreset,
                                     disableVideoAutoplay = disableVideoAutoplay,
-                                    infiniteScrollEnabled = appSettingsViewModel.appSettings.value?.enableInfiniteScroll ?: false
+                                    infiniteScrollEnabled = infiniteScrollEnabled
                                 )
                             }
 

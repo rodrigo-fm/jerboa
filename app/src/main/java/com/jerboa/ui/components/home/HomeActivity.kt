@@ -98,6 +98,7 @@ fun HomeScreen(
     swipeToActionPreset: SwipeToActionPreset,
     disableVideoAutoplay: Boolean,
     padding: PaddingValues,
+    infiniteScrollEnabled: Boolean,
 ) {
     Log.d("jerboa", "got to home screen")
 
@@ -181,6 +182,7 @@ fun HomeScreen(
                     postActionBarMode = postActionBarMode,
                     swipeToActionPreset = swipeToActionPreset,
                     disableVideoAutoplay = disableVideoAutoplay,
+                    infiniteScrollEnabled = infiniteScrollEnabled,
                 )
             }
         },
@@ -232,6 +234,7 @@ fun MainPostListingsContent(
     postActionBarMode: PostActionBarMode,
     swipeToActionPreset: SwipeToActionPreset,
     disableVideoAutoplay: Boolean,
+    infiniteScrollEnabled: Boolean,
 ) {
     val ctx = LocalContext.current
     val resources = LocalResources.current
@@ -435,7 +438,8 @@ fun MainPostListingsContent(
             },
             onPersonClick = appState::toProfile,
             loadMorePosts = {
-                homeViewModel.appendPosts()
+                scrollToTop(scope, postListState)
+                homeViewModel.loadMorePosts(infiniteScrollEnabled)
             },
             account = account,
             listState = postListState,
@@ -467,7 +471,7 @@ fun MainPostListingsContent(
             showPostAppendRetry = homeViewModel.postsRes is ApiState.AppendingFailure,
             swipeToActionPreset = swipeToActionPreset,
             disableVideoAutoplay = disableVideoAutoplay,
-            infiniteScrollEnabled = appSettingsViewModel.appSettings.value?.enableInfiniteScroll ?: false
+            infiniteScrollEnabled = infiniteScrollEnabled
         )
     }
 }

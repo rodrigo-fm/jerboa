@@ -164,12 +164,9 @@ fun PostListings(
         // TODO: fix button being displayed during loading
         //  find where the appState is making the fetch posts request
         if (!infiniteScrollEnabled) {
+            // TODO: should scroll to top when finishing loading
             item(contentType = "next_posts") {
-                NextPage {
-                    // TODO: clear the current posts list and display the a new post list
-                    //  I think the "loadMorePosts" will be modified here, still have to
-                    //  investigate though.
-                }
+                NextPage(loadMorePosts)
             }
         }
 

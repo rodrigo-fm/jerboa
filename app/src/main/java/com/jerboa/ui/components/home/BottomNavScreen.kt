@@ -265,6 +265,7 @@ fun BottomNavScreen(
                             postActionBarMode = appSettings.postActionBarMode.toEnum(),
                             swipeToActionPreset = appSettings.swipeToActionPreset.toEnum(),
                             disableVideoAutoplay = appSettings.disableVideoAutoplay.toBool(),
+                            infiniteScrollEnabled = appSettings.enableInfiniteScroll,
                             padding = padding,
                         )
                     }
@@ -332,6 +333,7 @@ fun BottomNavScreen(
                             postActionBarMode = appSettings.postActionBarMode.toEnum(),
                             swipeToActionPreset = appSettings.swipeToActionPreset.toEnum(),
                             disableVideoAutoplay = appSettings.disableVideoAutoplay.toBool(),
+                            infiniteScrollEnabled = appSettings.enableInfiniteScroll,
                             padding = padding,
                         )
                     }
@@ -355,6 +357,7 @@ fun BottomNavScreen(
                             postActionBarMode = appSettings.postActionBarMode.toEnum(),
                             swipeToActionPreset = appSettings.swipeToActionPreset.toEnum(),
                             disableVideoAutoplay = appSettings.disableVideoAutoplay.toBool(),
+                            infiniteScrollEnabled = appSettings.enableInfiniteScroll,
                             padding = padding,
                         )
                     }

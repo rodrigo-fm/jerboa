@@ -20,7 +20,6 @@ import com.jerboa.db.entity.AnonAccount
 import com.jerboa.db.repository.AccountRepository
 import com.jerboa.feed.PaginationController
 import com.jerboa.feed.PostController
-import com.jerboa.findAndUpdatePostHidden
 import com.jerboa.toEnumSafe
 import it.vercruysse.lemmyapi.datatypes.CreatePostLike
 import it.vercruysse.lemmyapi.datatypes.DeletePost
@@ -82,24 +81,24 @@ open class PostsViewModel(
         }
     }
 
-    // TODO: continue work here.
-    //  Analyze if the usage of infiniteScrollEnabled is the right
-    //  pattern here.
-    fun appendPosts(infiniteScrollEnabled: Boolean) {
+    // TODO: upvotes and comment count not changing
+    fun loadMorePosts(infiniteScrollEnabled: Boolean) {
         Log.d("PostsViewModel", "Appending posts")
         viewModelScope.launch {
             val oldRes = postsRes
-            postsRes = when (oldRes) {
-                is ApiState.Appending -> return@launch
-                is ApiState.Holder -> ApiState.Appending(oldRes.data)
-                else -> return@launch
-            }
+            if (oldRes !is ApiState.Holder) return@launch
+
+            postsRes = ApiState.Appending(oldRes.data)
 
             when (val newRes = API.getInstance().getPosts(getForm()).toApiState()) {
                 is ApiState.Success -> {
+                    if (!infiniteScrollEnabled) postController.clear()
                     pageController.nextPage(newRes.data.next_page)
                     postController.addAll(newRes.data.posts)
-                    postsRes = ApiState.Success(oldRes.data)
+                    postsRes = when (infiniteScrollEnabled) {
+                        true -> ApiState.Success(oldRes.data)
+                        false -> ApiState.Success(newRes.data.posts)
+                    }
                 }
 
                 else -> {
